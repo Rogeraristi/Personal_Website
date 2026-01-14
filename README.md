@@ -1,14 +1,75 @@
-# updated website
+# Personal Portfolio Website
 
-This repo is built on a fork of **Jekyll Now** from [this repository](https://github.com/barryclark/jekyll-now). **Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
+A modern, responsive personal portfolio website built with Next.js 14, TypeScript, and Tailwind CSS.
 
-The website design is just a modification of [Jon Barron's website](https://jonbarron.info/) and is converted for my own use, re-purposing my old markdown posts. **Feel free to use template for your own purposes**, but please respect copyright for all the images/content in my `images`, `pdfs`, `_posts` folders. 
+## Features
 
+- ⚡ **Next.js 14** with App Router
+- 🎨 **Tailwind CSS** for styling
+- 📱 **Fully Responsive** design
+- 🌙 **Dark Theme** with glassmorphism effects
+- ✨ **Smooth Animations** and micro-interactions
+- 🚀 **Vercel-Ready** for instant deployment
 
+## Getting Started
 
-## issues
-* In general, jekyll will try to build a full page for every post. I skip that by forcing `permalink: /`. This creates multiple entries in sitemap.xml for index.html but is otherwise fine. 
-* If you want multiple paragraphs, consider using `excerpt_separator: <!--more-->` in `_config.yml`, for my own use I didn't need this. 
-* My own posts have lots of extra stuff left over from my old jekyll design ("author", long descriptions, etc.), feel free to ignore them
-* I use thumbnails, so I can upload arbitrary sized images but then only display small ones. The `_make_thumbnails.sh` script generates them and the html template looks in `tn/` for all images. 
-* I have three categories of post with slightly differerent formatting, so changing sizing requires edits in multiple paces. 
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the site.
+
+### Building for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Deployment
+
+This project is optimized for deployment on [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Import the repository in Vercel
+3. Deploy!
+
+## Project Structure
+
+```
+├── src/
+│   ├── app/
+│   │   ├── globals.css    # Global styles
+│   │   ├── layout.tsx     # Root layout
+│   │   └── page.tsx       # Home page
+│   └── components/
+│       ├── Hero.tsx       # Hero section
+│       ├── About.tsx      # About section
+│       ├── Experience.tsx # Work experience
+│       ├── Education.tsx  # Education
+│       ├── Skills.tsx     # Skills & technologies
+│       ├── Projects.tsx   # Featured projects
+│       └── Contact.tsx    # Contact & social links
+├── public/                # Static assets
+├── tailwind.config.ts     # Tailwind configuration
+└── next.config.ts         # Next.js configuration
+```
+
+## Customization
+
+Edit the component files in `src/components/` to update your personal information, projects, and social links.
+
+## License
+
+MIT License
