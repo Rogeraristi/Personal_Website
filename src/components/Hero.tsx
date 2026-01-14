@@ -1,11 +1,20 @@
+import Image from "next/image";
+
 export default function Hero() {
     return (
         <section className="min-h-screen flex items-center justify-center px-6 py-20">
             <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-                {/* Profile Image Placeholder */}
-                <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-primary-500 via-accent-500 to-orange-500 p-1">
-                    <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                        <span className="text-5xl">RA</span>
+                {/* Profile Image */}
+                <div className="w-48 h-48 mx-auto mb-8 relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-br from-primary-500 via-accent-500 to-orange-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                    <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-800">
+                        <Image
+                            src="/profile.jpg"
+                            alt="Roger Aristizabal"
+                            fill
+                            className="object-cover object-top"
+                            priority
+                        />
                     </div>
                 </div>
 

@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>
+            <body suppressHydrationWarning>
                 {/* Background gradient orbs */}
                 <div className="bg-gradient-orb orb-1" />
                 <div className="bg-gradient-orb orb-2" />
