@@ -10,7 +10,7 @@ const skillCategories: SkillCategory[] = [
     },
     {
         name: "Data Analysis & Modeling",
-        skills: ["SQL (Joins, CTEs, Stored Procedures)", "Python (Pandas, NumPy, Scikit-learn)", "Statistical Modeling", "Risk Analysis"],
+        skills: ["SQL (Joins, CTEs, Stored Procedures)", "Python (Pandas, NumPy, Scikit-learn)"],
     },
     {
         name: "Web & Data Tools",
@@ -18,7 +18,7 @@ const skillCategories: SkillCategory[] = [
     },
     {
         name: "Languages",
-        skills: ["Spanish (Native)", "French (Intermediate)", "Russian (Basic)", "English (Fluent)"],
+        skills: ["Spanish (Native)", "French (Intermediate)", "Russian (Basic)"],
     },
 ];
 
