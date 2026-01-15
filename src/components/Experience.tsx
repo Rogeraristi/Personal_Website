@@ -61,6 +61,16 @@ const experiences: ExperienceItem[] = [
             "Created interactive Tableau and Power BI dashboards, transforming complex data into clear visual decks for client presentations",
         ],
     },
+    {
+        title: "Marketing & Development Intern",
+        company: "Bloomberg Philanthropies & Studio Institute",
+        location: "Manhattan, NY",
+        period: "June 2019 - Aug. 2019",
+        description: [
+            "Collaborated on a grant proposal that secured $150,000 in funding from M&T Bank to support research and development for a nonprofit organization specializing in experimental theater",
+            "Supported budgeting and timeline development for 5+ active grant proposals under the Director of Development",
+        ],
+    },
 ];
 
 export default function Experience() {
