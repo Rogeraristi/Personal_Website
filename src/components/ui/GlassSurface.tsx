@@ -87,7 +87,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     const redGradId = `red-grad-${uniqueId}`;
     const blueGradId = `blue-grad-${uniqueId}`;
 
-    const [svgSupported, setSvgSupported] = useState<boolean>(false);
+    // SVG filters disabled per user request for "frosted look"
+    const svgSupported = false;
 
     const containerRef = useRef<HTMLDivElement>(null);
     const feImageRef = useRef<SVGFEImageElement>(null);
@@ -163,9 +164,11 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         mixBlendMode
     ]);
 
+    /* 
     useEffect(() => {
         setSvgSupported(supportsSVGFilters());
     }, []);
+    */
 
     useEffect(() => {
         if (!containerRef.current) return;
