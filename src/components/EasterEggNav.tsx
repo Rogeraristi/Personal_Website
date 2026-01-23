@@ -12,7 +12,7 @@ export default function EasterEggNav() {
     const [audio] = useState(() => {
         if (typeof window === "undefined") return null;
         const el = new Audio(audioSrc);
-        el.volume = 0.6;
+        el.volume = 0.35;
         return el;
     });
 
