@@ -218,24 +218,14 @@ export default function Music() {
                                 <p className="text-xs uppercase tracking-[0.2em] text-gray-400">Listening rotation</p>
                                 <h4 className="text-lg font-semibold text-white">Current inspirations</h4>
                             </div>
-                            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-orange-500/40 to-primary-500/40 flex items-center justify-center text-white">
-                                <svg
-                                    aria-hidden
-                                    viewBox="0 0 24 24"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <path d="M4 5h3l2 5v9" />
-                                    <path d="M10 5h4l2 5v9" />
-                                    <path d="M15 9H9" />
-                                    <circle cx="6" cy="20" r="1" />
-                                    <circle cx="16" cy="20" r="1" />
-                                </svg>
-                            </div>
+                            <svg
+                                aria-hidden
+                                className="h-6 w-6 text-green-400"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.479.12-1.02.6-1.14 4.26-1.26 9.541-.68 13.141 1.57.359.229.489.841.179 1.26zm.12-3.36C15.12 10.08 8.77 9.99 5.19 10.781c-.588.12-1.176-.169-1.296-.749-.12-.588.169-1.176.749-1.295 4.32-.961 11.26-.869 15.38 1.16.588.296.883.972.587 1.56-.296.588-.973.883-1.56.587z" />
+                            </svg>
                         </div>
                         <ul className="text-sm text-gray-300 space-y-2">
                             <li>Mahler & John Williams brass writing for tone and ensemble blend.</li>
@@ -243,16 +233,50 @@ export default function Music() {
                             <li>Arturo Sandoval, Snarky Puppy horn sections for punchy Latin jazz phrasing.</li>
                         </ul>
                         <a
-                            href="https://open.spotify.com"
-                            className="inline-flex items-center gap-2 mt-4 text-accent-200 text-sm hover:text-white"
+                            href="https://open.spotify.com/user/rogeraristi2?si=3e0563e35e6f48d3"
+                            className="inline-flex items-center gap-2 mt-4 px-3 py-2 rounded-full bg-green-500/20 text-green-300 text-sm hover:bg-green-500/30 hover:text-green-200 border border-green-500/30 transition-colors"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Hear the mix (Spotify)
-                            <span aria-hidden className="text-lg">\u2197</span>
+                            <svg
+                                className="h-4 w-4"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.479.12-1.02.6-1.14 4.26-1.26 9.541-.68 13.141 1.57.359.229.489.841.179 1.26zm.12-3.36C15.12 10.08 8.77 9.99 5.19 10.781c-.588.12-1.176-.169-1.296-.749-.12-.588.169-1.176.749-1.295 4.32-.961 11.26-.869 15.38 1.16.588.296.883.972.587 1.56-.296.588-.973.883-1.56.587z" />
+                            </svg>
+                            Follow on Spotify
                         </a>
                     </GlassSurface>
                 </div>
+
+                <GlassSurface className="p-8 hover-glow mb-10 bg-gradient-to-br from-green-500/5 to-emerald-500/5 border border-green-500/20" borderRadius={16}>
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                        <div>
+                            <div className="flex items-center gap-3 mb-3">
+                                <svg
+                                    className="h-8 w-8 text-green-400"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.479.12-1.02.6-1.14 4.26-1.26 9.541-.68 13.141 1.57.359.229.489.841.179 1.26zm.12-3.36C15.12 10.08 8.77 9.99 5.19 10.781c-.588.12-1.176-.169-1.296-.749-.12-.588.169-1.176.749-1.295 4.32-.961 11.26-.869 15.38 1.16.588.296.883.972.587 1.56-.296.588-.973.883-1.56.587z" />
+                                </svg>
+                                <h3 className="text-xl font-semibold text-white">Follow on Spotify</h3>
+                            </div>
+                            <p className="text-gray-400 mb-2">Listen to curated playlists spanning classical, rock, and Latin jazz.</p>
+                            <p className="text-sm text-gray-500">@rogeraristi2</p>
+                        </div>
+                        <a
+                            href="https://open.spotify.com/user/rogeraristi2?si=3e0563e35e6f48d3"
+                            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold hover:from-green-600 hover:to-emerald-600 transition-all shadow-lg shadow-green-500/20"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Visit profile
+                            <span aria-hidden className="text-lg">↗</span>
+                        </a>
+                    </div>
+                </GlassSurface>
 
                 {secretUnlocked && (
                     <GlassSurface className="p-6 hover-glow mt-8 border border-accent-500/40" borderRadius={16}>
