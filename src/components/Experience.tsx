@@ -6,6 +6,7 @@ interface ExperienceItem {
     location: string;
     period: string;
     description: string[];
+    type?: "contract" | "internship" | "full-time";
 }
 
 const experiences: ExperienceItem[] = [
@@ -14,6 +15,7 @@ const experiences: ExperienceItem[] = [
         company: "Middesk",
         location: "Manhattan, NY",
         period: "Nov. 2025 - Dec. 2025",
+        type: "contract",
         description: [
             "Built and optimized JavaScript and SQL-driven internal tools to resolve edge cases in automated entity-verification pipelines, improving data accuracy and reducing manual review workload",
             "Partnered with Product and Engineering to debug data inconsistencies and refine verification logic in production workflows",
@@ -25,6 +27,7 @@ const experiences: ExperienceItem[] = [
         company: "Applause",
         location: "Manhattan, NY",
         period: "Sep. 2025 - Oct. 2025",
+        type: "contract",
         description: [
             "Collected and validated data from 50+ smart devices daily for confidential MAANG-level technology clients, maintaining 100% data accuracy and integrity",
             "Trained and mentored 5+ new team members, standardizing data validation procedures and QA workflows that improved team productivity by 25%",
@@ -98,9 +101,16 @@ export default function Experience() {
                             <div className="ml-4">
                                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                                     <div>
-                                        <h3 className="text-xl font-semibold text-white">
-                                            {exp.title}
-                                        </h3>
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                            <h3 className="text-xl font-semibold text-white">
+                                                {exp.title}
+                                            </h3>
+                                            {exp.type === "contract" && (
+                                                <span className="px-2 py-0.5 text-xs rounded-full bg-accent-500/15 text-accent-300 border border-accent-500/30">
+                                                    Contract
+                                                </span>
+                                            )}
+                                        </div>
                                         <p className="text-primary-400 font-medium">{exp.company}</p>
                                         <p className="text-gray-500 text-sm">{exp.location}</p>
                                     </div>
