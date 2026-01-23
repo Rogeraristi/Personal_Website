@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Music from "@/components/Music";
 import MusicGate from "@/components/MusicGate";
 
@@ -18,12 +19,12 @@ export default function MusicPage() {
                         the creative side separate from professional analytics content.
                     </p>
                     <div className="mt-4 inline-flex items-center gap-3 text-sm text-accent-200">
-                        <a
+                        <Link
                             href="/"
                             className="px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:border-white/25 hover:text-white transition-colors"
                         >
                             Back to professional site
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
