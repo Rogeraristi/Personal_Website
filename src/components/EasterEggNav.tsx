@@ -8,6 +8,13 @@ export default function EasterEggNav() {
     const [unlocked, setUnlocked] = useState(false);
     const [progress, setProgress] = useState(0);
 
+    const markUnlocked = () => {
+        setUnlocked(true);
+        if (typeof window !== "undefined") {
+            sessionStorage.setItem("musicUnlocked", "1");
+        }
+    };
+
     useEffect(() => {
         const handler = (event: KeyboardEvent) => {
             const key = event.key.toLowerCase();
@@ -16,7 +23,7 @@ export default function EasterEggNav() {
             if (key === expected) {
                 const next = progress + 1;
                 if (next === unlockSequence.length) {
-                    setUnlocked(true);
+                    markUnlocked();
                     setProgress(0);
                 } else {
                     setProgress(next);
@@ -32,13 +39,20 @@ export default function EasterEggNav() {
         return () => window.removeEventListener("keydown", handler);
     }, [progress]);
 
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        if (sessionStorage.getItem("musicUnlocked") === "1") {
+            setUnlocked(true);
+        }
+    }, []);
+
     const showNav = unlocked;
 
     return (
         <div className="fixed top-4 right-4 z-50 flex flex-col items-end gap-2 pointer-events-none">
             <button
                 type="button"
-                onClick={() => setUnlocked(true)}
+                onClick={markUnlocked}
                 className="pointer-events-auto h-8 w-8 rounded-full border border-white/10 bg-white/5 text-white/50 backdrop-blur hover:text-white hover:border-white/30 hover:bg-white/10 transition-colors"
                 aria-label="Reveal hidden music navigation"
             >
@@ -61,6 +75,7 @@ export default function EasterEggNav() {
             {showNav && (
                 <a
                     href="/music"
+                    onClick={markUnlocked}
                     className="pointer-events-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-500/70 via-accent-500/70 to-orange-500/70 text-white text-sm shadow-lg shadow-primary-500/20 border border-white/15 hover:translate-y-[-1px] transition-transform"
                 >
                     <span className="font-semibold">Music</span>
