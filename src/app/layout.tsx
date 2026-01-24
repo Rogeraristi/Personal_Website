@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import EasterEggNav from "@/components/EasterEggNav";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
     title: "Roger Aristizabal | Data Analyst & Risk Modeling Professional",
@@ -30,6 +31,8 @@ export default function RootLayout({
                 <EasterEggNav />
 
                 {children}
+
+                <SpeedInsights />
             </body>
         </html>
     );
