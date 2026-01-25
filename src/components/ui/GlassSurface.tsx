@@ -43,23 +43,6 @@ export interface GlassSurfaceProps {
     style?: React.CSSProperties;
 }
 
-const useDarkMode = () => {
-    const [isDark, setIsDark] = useState(false);
-
-    useEffect(() => {
-        if (typeof window === 'undefined') return;
-
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        setIsDark(mediaQuery.matches);
-
-        const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
-        mediaQuery.addEventListener('change', handler);
-        return () => mediaQuery.removeEventListener('change', handler);
-    }, []);
-
-    return isDark;
-};
-
 const GlassSurface: React.FC<GlassSurfaceProps> = ({
     children,
     width = '100%',
@@ -136,7 +119,9 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         blueOffset,
         xChannel,
         yChannel,
-        mixBlendMode
+        mixBlendMode,
+        blueGradId,
+        redGradId
     ]);
 
     const updateDisplacementMap = useCallback(() => {

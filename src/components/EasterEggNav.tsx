@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const unlockSequence = ["m", "u", "s", "i", "c"];
@@ -16,7 +16,7 @@ export default function EasterEggNav() {
         return el;
     });
 
-    const handleNavigateToMusic = () => {
+    const handleNavigateToMusic = useCallback(() => {
         if (audio) {
             audio.currentTime = 0;
             audio.play().catch(() => {});
@@ -25,7 +25,7 @@ export default function EasterEggNav() {
             sessionStorage.setItem("musicUnlocked", "1");
         }
         router.push("/music");
-    };
+    }, [audio, router]);
 
     useEffect(() => {
         const handler = (event: KeyboardEvent) => {
@@ -50,8 +50,6 @@ export default function EasterEggNav() {
         window.addEventListener("keydown", handler);
         return () => window.removeEventListener("keydown", handler);
     }, [progress, handleNavigateToMusic]);
-
-    const showNav = false;
 
     return (
         <div className="fixed top-4 right-4 z-50 flex flex-col items-end gap-2 pointer-events-none">
