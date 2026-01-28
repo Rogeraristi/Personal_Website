@@ -96,6 +96,27 @@ export default function Contact() {
                     Say Hello 👋
                 </a>
 
+                {/* Calendar Scheduling */}
+                <div className="mt-16">
+                    <h3 className="text-2xl font-semibold mb-4">
+                        Schedule a <span className="gradient-text">Meeting</span>
+                    </h3>
+                    <p className="text-gray-400 mb-6">
+                        Book a time that works for you directly on my calendar.
+                    </p>
+                    <div className="glass-card rounded-2xl overflow-hidden">
+                        <iframe
+                            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3BXvR0DJp9Qr00YMpIP2K-_4nNRitpv__dhJ2oTwOYaRGw-IQuU-PkensEGtmaekY2dkg9EpSl?gv=true"
+                            style={{ border: 0 }}
+                            width="100%"
+                            height="600"
+                            frameBorder="0"
+                            title="Schedule an appointment"
+                            className="bg-white/5"
+                        />
+                    </div>
+                </div>
+
                 {/* Footer */}
                 <div className="mt-20 pt-8 border-t border-gray-800">
                     <p className="text-gray-500 text-sm">
