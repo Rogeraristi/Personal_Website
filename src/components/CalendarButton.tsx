@@ -28,8 +28,8 @@ export default function CalendarButton() {
                 initialized.current = true;
                 window.calendar.schedulingButton.load({
                     url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3BXvR0DJp9Qr00YMpIP2K-_4nNRitpv__dhJ2oTwOYaRGw-IQuU-PkensEGtmaekY2dkg9EpSl?gv=true",
-                    color: "#0ea5e9",
-                    label: "Book an Appointment",
+                    color: "#9E69AF",
+                    label: "Book an appointment",
                     target: buttonRef.current,
                 });
             }
