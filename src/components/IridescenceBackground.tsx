@@ -1,6 +1,18 @@
 "use client";
 
-import Iridescence from "@/components/ui/Iridescence";
+import dynamic from "next/dynamic";
+
+const Iridescence = dynamic(() => import("@/components/ui/Iridescence"), {
+    ssr: false,
+    loading: () => (
+        <div 
+            className="w-full h-full"
+            style={{
+                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(17, 113, 232, 0.3) 100%)'
+            }}
+        />
+    )
+});
 
 export default function IridescenceBackground() {
     return (
