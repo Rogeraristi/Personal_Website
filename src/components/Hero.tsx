@@ -39,9 +39,9 @@ export default function Hero() {
                     width="100%"
                     height="auto"
                     borderRadius={16}
-                    blur={8}
+                    blur={0}
                     opacity={0.3}
-                    backgroundOpacity={0.05}
+                    backgroundOpacity={0.08}
                     className="mb-4 py-4 px-6 mx-auto max-w-fit"
                 >
                     <h1 className="text-5xl md:text-7xl font-bold">
@@ -68,9 +68,9 @@ export default function Hero() {
                     width="100%"
                     height="auto"
                     borderRadius={12}
-                    blur={6}
+                    blur={0}
                     opacity={0.25}
-                    backgroundOpacity={0.03}
+                    backgroundOpacity={0.06}
                     className="mb-12 py-6 px-6 mx-auto max-w-2xl"
                 >
                     <p className="text-lg text-neutral-300 leading-relaxed">
