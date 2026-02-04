@@ -266,30 +266,38 @@ export default function Music() {
                     </GlassSurface>
                 </div>
 
-                <GlassSurface className="p-8 hover-glow mt-6 mb-10 bg-gradient-to-br from-green-500/5 to-emerald-500/5 border border-green-500/20" borderRadius={16}>
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                        <div>
-                            <div className="flex items-center gap-3 mb-3">
-                                <svg
-                                    className="h-8 w-8 text-green-400"
-                                    fill="currentColor"
-                                    viewBox="0 0 168 168"
-                                >
-                                    <path d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.1c-1.5 2.5-4.7 3.3-7.2 1.7-19.8-12.1-44.6-14.8-73.8-8.1-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 32-7.3 59.4-4.2 81.6 9.3 2.5 1.5 3.2 4.7 1.7 7.2zm10.3-22.9c-1.9 3.1-5.9 4-9 2.1-22.7-13.9-57.3-18-84.1-9.8-3.4 1-7-0.9-8-4.3-1-3.4.9-7 4.3-8 30.6-9.3 68.6-4.8 94.7 11.2 3 1.8 4 5.9 2.1 8.8zm.9-23.8c-27.2-16.2-72.1-17.7-98.1-9.8-4.2 1.3-8.6-1.1-9.8-5.2-1.3-4.2 1.1-8.6 5.2-9.8 29.8-9.1 79.5-7.3 110.8 11.3 3.8 2.2 5 7.1 2.8 10.8-2.2 3.8-7.1 5-10.9 2.7z"/>
-                                </svg>
-                                <h3 className="text-xl font-semibold text-white">Follow on Spotify</h3>
-                            </div>
-                            <p className="text-gray-400 mb-2">Listen to curated playlists spanning classical, rock, and Latin jazz.</p>
-                            <p className="text-sm text-gray-500">@rogeraristi2</p>
-                        </div>
+                <GlassSurface className="p-6 hover-glow mt-6 mb-10 bg-gradient-to-br from-green-500/5 to-emerald-500/5 border border-green-500/20" borderRadius={16}>
+                    <div className="flex items-center gap-3 mb-4">
+                        <svg
+                            className="h-7 w-7 text-green-400"
+                            fill="currentColor"
+                            viewBox="0 0 168 168"
+                        >
+                            <path d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.1c-1.5 2.5-4.7 3.3-7.2 1.7-19.8-12.1-44.6-14.8-73.8-8.1-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 32-7.3 59.4-4.2 81.6 9.3 2.5 1.5 3.2 4.7 1.7 7.2zm10.3-22.9c-1.9 3.1-5.9 4-9 2.1-22.7-13.9-57.3-18-84.1-9.8-3.4 1-7-0.9-8-4.3-1-3.4.9-7 4.3-8 30.6-9.3 68.6-4.8 94.7 11.2 3 1.8 4 5.9 2.1 8.8zm.9-23.8c-27.2-16.2-72.1-17.7-98.1-9.8-4.2 1.3-8.6-1.1-9.8-5.2-1.3-4.2 1.1-8.6 5.2-9.8 29.8-9.1 79.5-7.3 110.8 11.3 3.8 2.2 5 7.1 2.8 10.8-2.2 3.8-7.1 5-10.9 2.7z"/>
+                        </svg>
+                        <h3 className="text-xl font-semibold text-white">Now Playing</h3>
+                    </div>
+                    <div className="rounded-xl overflow-hidden">
+                        <iframe
+                            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0"
+                            width="100%"
+                            height="352"
+                            frameBorder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                            className="rounded-xl"
+                        />
+                    </div>
+                    <div className="flex items-center justify-between mt-4">
+                        <p className="text-sm text-gray-400">Curated playlists spanning classical, rock, and Latin jazz</p>
                         <a
                             href="https://open.spotify.com/user/rogeraristi2?si=3e0563e35e6f48d3"
-                            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold hover:from-green-600 hover:to-emerald-600 transition-all shadow-lg shadow-green-500/20"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-300 text-sm hover:bg-green-500/30 hover:text-green-200 border border-green-500/30 transition-colors"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Visit profile
-                            <span aria-hidden className="text-lg">↗</span>
+                            <span>View Profile</span>
+                            <span aria-hidden>↗</span>
                         </a>
                     </div>
                 </GlassSurface>
