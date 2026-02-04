@@ -16,7 +16,7 @@ const Iridescence = dynamic(() => import("@/components/ui/Iridescence"), {
 
 export default function IridescenceBackground() {
     return (
-        <div className="fixed inset-0 z-[-2] opacity-30">
+        <div className="fixed inset-0 z-[-2] opacity-50">
             <Iridescence
                 color={[0.1, 0.1, 0.6]}
                 speed={1.0}
