@@ -40,9 +40,9 @@ export default function Navigation() {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                 scrolled
-                    ? "bg-gray-900/80 backdrop-blur-lg border-b border-gray-800/50 py-3"
+                    ? "bg-neutral-950/70 backdrop-blur-xl border-b border-neutral-800/30 py-3"
                     : "bg-transparent py-5"
             }`}
         >
@@ -50,7 +50,7 @@ export default function Navigation() {
                 {/* Logo/Name */}
                 <a
                     href="#"
-                    className="text-lg font-bold gradient-text hover:opacity-80 transition-opacity"
+                    className="text-lg font-semibold gradient-text hover:opacity-80 transition-opacity"
                 >
                     RA
                 </a>
@@ -61,10 +61,10 @@ export default function Navigation() {
                         <a
                             key={item.href}
                             href={item.href}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                                 activeSection === item.href.slice(1)
                                     ? "text-primary-400 bg-primary-500/10"
-                                    : "text-gray-400 hover:text-white hover:bg-gray-800/50"
+                                    : "text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800/40"
                             }`}
                         >
                             {item.label}
@@ -77,7 +77,7 @@ export default function Navigation() {
                     href="/Resume_Aristizabal.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+                    className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary-600 to-accent-600 text-white text-sm font-medium hover:from-primary-500 hover:to-accent-500 transition-all duration-300 shadow-lg shadow-primary-500/20"
                 >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -88,7 +88,7 @@ export default function Navigation() {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="md:hidden p-2 text-gray-400 hover:text-white"
+                    className="md:hidden p-2 text-neutral-400 hover:text-neutral-100 transition-colors"
                     aria-label="Toggle menu"
                 >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function Navigation() {
 
             {/* Mobile Menu */}
             {mobileMenuOpen && (
-                <div className="md:hidden bg-gray-900/95 backdrop-blur-lg border-t border-gray-800/50 mt-2">
+                <div className="md:hidden bg-neutral-950/90 backdrop-blur-xl border-t border-neutral-800/30 mt-2">
                     <div className="px-6 py-4 space-y-2">
                         {navItems.map((item) => (
                             <a
@@ -113,7 +113,7 @@ export default function Navigation() {
                                 className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                                     activeSection === item.href.slice(1)
                                         ? "text-primary-400 bg-primary-500/10"
-                                        : "text-gray-400 hover:text-white hover:bg-gray-800/50"
+                                        : "text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800/40"
                                 }`}
                             >
                                 {item.label}
@@ -123,7 +123,7 @@ export default function Navigation() {
                             href="/Resume_Aristizabal.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 px-4 py-3 mt-4 rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-semibold"
+                            className="flex items-center justify-center gap-2 px-4 py-3 mt-4 rounded-lg bg-gradient-to-r from-primary-600 to-accent-600 text-white text-sm font-medium"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
