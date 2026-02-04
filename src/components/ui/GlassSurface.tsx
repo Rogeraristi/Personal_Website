@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState, useId } from 'react';
+import React, { useCallback, useEffect, useRef, useId } from 'react';
 
 export interface GlassSurfaceProps {
     children?: React.ReactNode;
@@ -112,13 +112,6 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         brightness,
         opacity,
         blur,
-        displace,
-        distortionScale,
-        redOffset,
-        greenOffset,
-        blueOffset,
-        xChannel,
-        yChannel,
         mixBlendMode,
         blueGradId,
         redGradId

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 const unlockSequence = ["m", "u", "s", "i", "c"];
@@ -9,23 +9,22 @@ const audioSrc = "/audio/ps3-orchestra.mp3"; // place PS3-style startup/tuning a
 export default function EasterEggNav() {
     const router = useRouter();
     const [progress, setProgress] = useState(0);
-    const [audio] = useState(() => {
-        if (typeof window === "undefined") return null;
-        const el = new Audio(audioSrc);
-        el.volume = 0.35;
-        return el;
-    });
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    // Initialize audio only on client side after mount
+    useEffect(() => {
+        audioRef.current = new Audio(audioSrc);
+        audioRef.current.volume = 0.35;
+    }, []);
 
     const handleNavigateToMusic = useCallback(() => {
-        if (audio) {
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play().catch(() => {});
         }
-        if (typeof window !== "undefined") {
-            sessionStorage.setItem("musicUnlocked", "1");
-        }
+        sessionStorage.setItem("musicUnlocked", "1");
         router.push("/music");
-    }, [audio, router]);
+    }, [router]);
 
     useEffect(() => {
         const handler = (event: KeyboardEvent) => {

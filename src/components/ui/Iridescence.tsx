@@ -1,7 +1,7 @@
 "use client";
 
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const vertexShader = `
 attribute vec2 uv;
@@ -65,13 +65,26 @@ export default function Iridescence({
 }: IridescenceProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (!ctnDom.current) return;
     const ctn = ctnDom.current;
-    const renderer = new Renderer();
+    
+    let renderer: Renderer;
+    let animateId: number;
+    let currentProgram: Program;
+    let canvasAdded = false;
+
+    try {
+      renderer = new Renderer();
+      renderer.gl.clearColor(1, 1, 1, 1);
+    } catch {
+      setHasError(true);
+      return;
+    }
+
     const gl = renderer.gl;
-    gl.clearColor(1, 1, 1, 1);
 
     function resize() {
       const scale = 1;
@@ -87,40 +100,47 @@ export default function Iridescence({
     window.addEventListener('resize', resize, false);
     resize();
 
-    const geometry = new Triangle(gl);
-    const currentProgram = new Program(gl, {
-      vertex: vertexShader,
-      fragment: fragmentShader,
-      uniforms: {
-        uTime: { value: 0 },
-        uColor: { value: new Color(...color) },
-        uResolution: {
-          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
-        },
-        uMouse: { value: new Float32Array([mousePos.current.x, mousePos.current.y]) },
-        uAmplitude: { value: amplitude },
-        uSpeed: { value: speed }
+    try {
+      const geometry = new Triangle(gl);
+      currentProgram = new Program(gl, {
+        vertex: vertexShader,
+        fragment: fragmentShader,
+        uniforms: {
+          uTime: { value: 0 },
+          uColor: { value: new Color(...color) },
+          uResolution: {
+            value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
+          },
+          uMouse: { value: new Float32Array([mousePos.current.x, mousePos.current.y]) },
+          uAmplitude: { value: amplitude },
+          uSpeed: { value: speed }
+        }
+      });
+
+      const mesh = new Mesh(gl, { geometry, program: currentProgram });
+
+      function update(t: number) {
+        animateId = requestAnimationFrame(update);
+        currentProgram.uniforms.uTime.value = t * 0.001;
+        renderer.render({ scene: mesh });
       }
-    });
-
-    const mesh = new Mesh(gl, { geometry, program: currentProgram });
-    let animateId: number;
-
-    function update(t: number) {
       animateId = requestAnimationFrame(update);
-      currentProgram.uniforms.uTime.value = t * 0.001;
-      renderer.render({ scene: mesh });
+      ctn.appendChild(gl.canvas);
+      canvasAdded = true;
+    } catch {
+      setHasError(true);
+      return;
     }
-    animateId = requestAnimationFrame(update);
-    ctn.appendChild(gl.canvas);
 
     function handleMouseMove(e: MouseEvent) {
       const rect = ctn.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
       const y = 1.0 - (e.clientY - rect.top) / rect.height;
       mousePos.current = { x, y };
-      currentProgram.uniforms.uMouse.value[0] = x;
-      currentProgram.uniforms.uMouse.value[1] = y;
+      if (currentProgram) {
+        currentProgram.uniforms.uMouse.value[0] = x;
+        currentProgram.uniforms.uMouse.value[1] = y;
+      }
     }
 
     if (mouseReact) {
@@ -128,15 +148,34 @@ export default function Iridescence({
     }
 
     return () => {
-      cancelAnimationFrame(animateId);
+      if (animateId) cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
       if (mouseReact) {
         ctn.removeEventListener('mousemove', handleMouseMove);
       }
-      ctn.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      if (canvasAdded && ctn.contains(gl.canvas)) {
+        ctn.removeChild(gl.canvas);
+      }
+      try {
+        gl.getExtension('WEBGL_lose_context')?.loseContext();
+      } catch {
+        // Ignore cleanup errors
+      }
     };
   }, [color, speed, amplitude, mouseReact]);
+
+  // Fallback gradient if WebGL fails
+  if (hasError) {
+    return (
+      <div 
+        className={`w-full h-full ${className}`} 
+        style={{
+          ...style,
+          background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(17, 113, 232, 0.3) 100%)'
+        }}
+      />
+    );
+  }
 
   return (
     <div 
