@@ -72,7 +72,7 @@ export default function Hero() {
                         href="#contact"
                         className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-accent-600 
                        text-white font-medium hover:from-primary-500 hover:to-accent-500 
-                       transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40"
+                       transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/30"
                     >
                         Get in Touch
                     </a>
