@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useId } from 'react';
+import React, { useCallback, useEffect, useRef, useId, useState } from 'react';
 
 export interface GlassSurfaceProps {
     children?: React.ReactNode;
@@ -79,6 +79,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     const greenChannelRef = useRef<SVGFEDisplacementMapElement>(null);
     const blueChannelRef = useRef<SVGFEDisplacementMapElement>(null);
     const gaussianBlurRef = useRef<SVGFEGaussianBlurElement>(null);
+    const [hydrated, setHydrated] = useState(false);
+    const [backdropSupported, setBackdropSupported] = useState(false);
 
     const generateDisplacementMap = useCallback(() => {
         const rect = containerRef.current?.getBoundingClientRect();
@@ -176,6 +178,11 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         return CSS.supports('backdrop-filter', 'blur(10px)');
     };
 
+    useEffect(() => {
+        setHydrated(true);
+        setBackdropSupported(supportsBackdropFilter());
+    }, []);
+
     const getContainerStyles = (): React.CSSProperties => {
         const baseStyles: React.CSSProperties = {
             ...style,
@@ -186,7 +193,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
             '--glass-saturation': saturation
         } as React.CSSProperties;
 
-        const backdropFilterSupported = supportsBackdropFilter();
+        const backdropFilterSupported = hydrated ? backdropSupported : false;
         // Force dark mode for this specific dark-themed website to match design
         const effectivelyDark = true;
 
